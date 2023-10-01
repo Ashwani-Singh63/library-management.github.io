@@ -1,86 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LMS</title>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        input[type='radio']:after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -12px;
+            left: 2px;
+            position: relative;
+            background-color: #d1d3d1;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+
+        input[type='radio']:checked:after {
+            width: 20px;
+            height: 20px;
+            border-radius: 15px;
+            top: -10px;
+            left: 1px;
+            position: relative;
+            background-color: #0059ff;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
         
-        <script src="https://cdn.tailwindcss.com"></script>
-        
-    </head>
-
-    <body class="bg-[url('image/Frame_3.png')]">
-
-        <!-- Nav-Bar -->
-        <nav class="text-white flex justify-around items-center w-[100%] h-[10vh]">
-
-           <div class="w-[60%]  ">
-
-                <img src="image/Library_bg.png" alt="Logo">
-
-           </div>
-
+        .input-field {
+            border: 2px solid blue;
+            outline: none;
+        }
+        .footer {
+            position: absolute;
+            width: 100%;
             
+            bottom: 0;
+        }
 
-        </nav>
+        @media screen and (max-width: 650px) {
+            input[type='radio']:after {
+                top: -12px;
+                left: 2px;
+                position: relative;
+            }
 
-        <!-- Welcome-Part -->
-        <section class="w-[100%] h-[82vh] flex items-center justify-around text-white">
+            input[type='radio']:checked:after {
+                top: -9px;
+                left: 1px;
+                position: relative;
+            }
+        }
 
-            <div class="hidden lg:block font-bold">
-                
-                <h2 class="text-[45px] lg:text-[50px] xl:text-[60px]">Welcome <span class="text-purple-400">Back!</span></h2>
+        @media screen and (max-width: 500px) {
+            input[type='radio']:after {
+                top: -2px;
+                left: 2px;
+                position: relative;
+            }
 
-                <p class="text-[30px] text-center"># <span class="text-purple-400">I</span>ssue new books</p>
-                
-                <p class="text-[30px] text-center"># <span class="text-purple-400">T</span>rending books</p>
-               
-                <p class="text-[30px] text-center"># <span class="text-purple-400">R</span>eturn Issue<br> much more...</p>
+            input[type='radio']:checked:after {
+                top: -1px;
+                left: 1px;
+                position: relative;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[url('./image/Frame_3.png')]">
+
+    <!-- Nav-Bar -->
+    <nav class="text-white flex justify-around items-center w-[100%] h-[10vh]">
+
+        <div class="w-[60%]  ">
+
+            <a href="./index.html">
+                <img src="./image/Library_bg.png" alt="Logo">
+            </a>
+
+        </div>
 
 
 
-            </div>
+    </nav>
+
+    <!-- <h2 class="text-[65px] block lg:hidden">Welcome <span class="text-purple-400">Back!</span></h2> -->
+
+    <!-- Welcome-Part -->
+    <section class="w-[100%] h-[82vh] flex items-center justify-around text-white">
+
+        <div class="hidden lg:block font-bold" id="userDiv">
+
+            <h2 class="text-[45px] lg:text-[50px] xl:text-[60px]">Welcome <span class="text-purple-400">Back!</span>
+            </h2>
+
+            <p class="text-[30px] text-center"># <span class="text-purple-400">I</span>ssue new books</p>
+
+            <p class="text-[30px] text-center"># <span class="text-purple-400">T</span>rending books</p>
+
+            <p class="text-[30px] text-center"># <span class="text-purple-400">R</span>eturn Issue<br> much more...</p>
+
+        </div>
+
+        <div class="hidden lg:hidden font-bold" id="adminDiv">
+
+            <h2 class="text-[45px] lg:text-[50px] xl:text-[60px]">Welcome <span class="text-purple-400">Back!</span>
+            </h2>
+
+            <p class="text-[30px] text-center"># <span class="text-purple-400">A</span>dd Books</p>
+
+            <p class="text-[30px] text-center"># <span class="text-purple-400">A</span>dd Students</p>
+
+            <p class="text-[30px] text-center"># <span class="text-purple-400">A</span>ccept Request<br> much more...
+            </p>
+
+        </div>
 
 
-            <!-- Reqested form  -->
-            <div class="bg-zinc-800 p-10 lg:p-20 rounded-2xl">
+        <!-- Reqested form  -->
+        <div class="bg-zinc-800 p-10 lg:p-20">
 
-               <form action="" class=" text-[25px]" >
+            <form action="" class="text-right text-[18px] sm:text-[25px]">
 
-                <input type="text" name="name" id="Uname" placeholder="Enter Name" class="h-[50px] w-[250px] sm:w-[300px] md:w-[450px] pl-4 my-4 rounded-xl text-white border-blue-600 border-2 bg-transparent"><br>
+                <div class="flex flex-col">
+                    <div>
+                        <label for="email" class="text-xl float-left">E-mail:</label>
+                    </div>
+                    <input type="email" name="email" id="email" placeholder="Enter Email"
+                        class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
+                </div>
 
-                <input type="password" name="password" id="passwd" placeholder="Enter Password" class="h-[50px] w-[250px] sm:w-[300px] md:w-[450px] pl-4 my-4 rounded-xl  text-white border-blue-600 border-2 bg-transparent"><br>
+                <div class="flex flex-col">
+                    <div>
+                        <label for="password" class="text-xl float-left">Password:</label>
+                    </div>
+                    <input type="password" name="password" id="password" placeholder="Enter Password"
+                        class="h-[50px]  w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
+                </div>
 
-                <input type="radio" name="type" id="admin" class="mr-2 h-[25px] w-[25px] my-4"><label for="admin" class="mr-8 " >Admin</label>
 
-                <input type="radio" name="type" id="user"  class="mr-2 h-[25px] w-[25px] my-4"><label for="user">User</label><br>
+                <div class="flex justify-around">
+                    <div>
+                        <input type="radio" name="usertype" class="h-5 w-5 bg-blue-800" onclick="selectedUserType()"
+                            id="user-radio" checked />
+                        <label for="user-radio" class="text-xl cursor-pointer">User</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="usertype" id="admin-radio" onclick="selectedUserType()"
+                            class="h-5 w-5 text-blue-800" />
+                        <label for="admin-radio" class="text-xl cursor-pointer">Admin</label>
+                    </div>
+                </div>
 
-                <button class="my-4 p-2 rounded-lg text-[25px]  w-[350px] md:w-[450px] font-semibold bg-blue-500 hover:bg-blue-800 hover:shadow-2xl hover:shadow-indigo-500/50">Login</button><br>
+                <button
+                    class="my-4 px-4 py-3 rounded-lg text-[18px] sm:text-[25px]  w-[100%] sm:w-[350px] md:w-[450px] font-semibold bg-blue-500 hover:bg-blue-800 hover:shadow-2xl hover:shadow-indigo-500/50">Login</button><br>
 
-                <a href="request.html" class="text-blue-700">New User, Request</a>
+                <a href="request.html" style="text-decoration: underline;" class="text-blue-700 text-lg">Admin Request</a>
 
-               </form>
+            </form>
 
-            </div>
+        </div>
 
-        </section>
+    </section>
 
-        <!-- Footer -->
-        <footer>
+    <!-- Footer -->
+    <footer class="footer">
 
-            <div class="bg-zinc-800 tracking-widest  w-[100%] text-center pt-4 h-[8vh] text-white text-[25px] font-semibold">
-    
-                <p>
-                    <a href="#">Learners to Build</a>
-                </p>
-    
-            </div>
-    
-        </footer>
+        <div
+            class="bg-zinc-800 tracking-widest  w-[100%] text-center pt-4 h-[8vh] text-white text-[25px] font-semibold">
 
-        <script>
+            <p>
+                <a href="#">Learners to Build</a>
+            </p>
 
-        </script>
+        </div>
 
-    </body>
+    </footer>
+
+    <script>
+        function selectedUserType() {
+            let userDiv = document.getElementById("userDiv");
+            let adminDiv = document.getElementById("adminDiv");
+
+            if (userDiv.classList.contains("lg:block")) {
+                userDiv.classList.remove("lg:block");
+                userDiv.classList.add("lg:hidden");
+                adminDiv.classList.add("lg:block");
+                adminDiv.classList.remove("lg:hidden");
+            } else {
+                userDiv.classList.remove("lg:hidden");
+                userDiv.classList.add("lg:block");
+                adminDiv.classList.add("lg:hidden");
+                adminDiv.classList.remove("lg:block");
+            }
+        }
+
+        
+    </script>
+
+</body>
+
 </html>
