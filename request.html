@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LMS</title>
+        
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <style>
+
+            input[type = "password"].error {
+
+                border : 3px solid red;
+                
+            }
+
+        </style>
+        
+    </head>
+
+    <body class="bg-[url('image/Frame_3.png')]">
+
+        <!-- Nav-Bar -->
+        <nav class="text-white flex justify-around items-center w-[100%] h-[10vh]">
+
+           <div class="w-[60%]  ">
+
+                <img src="image/Library_bg.png" alt="Logo">
+
+           </div>
+
+            
+
+        </nav>
+
+        <!-- Welcome-Part -->
+        <section class="w-[100%] h-[82vh] flex items-center justify-around text-white">
+
+            <div class="hidden lg:block font-bold">
+                
+                <h2 class="text-[45px] lg:text-[50px] xl:text-[60px]">Request <span class="text-purple-400">Now!</span></h2>
+
+                <p class="text-[30px] text-center"># <span class="text-purple-400">E</span>xotic Filters</p>
+                
+                <p class="text-[30px] text-center"># <span class="text-purple-400">W</span>aitlist System</p>
+               
+                <p class="text-[30px] text-center"># <span class="text-purple-400">U</span>nique Rating System <br> much more...</p>
+
+
+
+            </div>
+
+
+            <!-- Reqested form  -->
+            <div class="bg-zinc-800 p-10 lg:p-20 rounded-2xl">
+
+               <form action="" class="text-center text-[25px]" >
+
+                <input type="text" name="name" id="Uname" placeholder="Enter Name" class="h-[50px] w-[250px] sm:w-[300px] md:w-[450px] pl-4 my-4 rounded-xl text-white border-blue-600 border-2 bg-transparent"><br>
+
+                <input type="email" name="email" id="email" placeholder="Enter Email" class="h-[50px] w-[250px] sm:w-[300px] md:w-[450px] pl-4 my-4 rounded-xl text-white border-blue-600 border-2 bg-transparent"><br>
+
+                <input type="password" name="password" id="passwd" placeholder="Enter Password" class="h-[50px] w-[250px] sm:w-[300px] md:w-[450px] pl-4 my-4 rounded-xl  text-white border-blue-600 border-2 bg-transparent"><br>
+
+                <input type="password" name="c_password" id="c_passwd" placeholder="Confirm Password" class="h-[50px] w-[250px] sm:w-[300px] md:w-[450px] pl-4 my-4 rounded-xl text-white border-blue-600 border-2 bg-transparent"><br>
+                
+                <input type="radio" name="type" id="admin" class="mr-2 h-[25px] w-[25px] my-4"><label for="admin" class="mr-8 " >Admin</label>
+
+                <input type="radio" name="type" id="user"  class="mr-2 h-[25px] w-[25px] my-4"><label for="user">User</label><br>
+
+                <button class="m-10 p-4 rounded-lg text-[25px] font-semibold bg-blue-500 hover:bg-blue-800 hover:shadow-2xl hover:shadow-indigo-500/50">Request</button>
+
+                <a href="login.html" class="text-blue-700 block sm:inline-block">Already Requested Login</a> 
+            
+               </form>
+
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <footer>
+
+            <div class="bg-zinc-800 tracking-widest  w-[100%] text-center pt-4 h-[8vh] text-white text-[25px] font-semibold">
+    
+                <p>
+                    <a href="#">Learners to Build</a>
+                </p>
+    
+            </div>
+    
+        </footer>
+
+        <script>
+
+            // Password Validation 
+            const passWord = document.getElementById('passwd');
+
+            const conPassword = document.getElementById('c_passwd');
+
+            conPassword.addEventListener ('input', () => {
+
+                if ( passWord.value != conPassword.value ) {
+
+                    conPassword.classList.add('error');
+
+                }
+                else {
+
+                    conPassword.classList.remove('error');
+
+                }
+
+            })
+            // End of Password Validatin
+
+        </script>
+
+    </body>
+</html>
