@@ -136,7 +136,7 @@
                     <div>
                         <label for="email" class="text-xl float-left">E-mail:</label>
                     </div>
-                    <input type="email" name="email" id="email" placeholder="Enter Email"
+                    <input type="email" name="email" id="email" placeholder="Enter Email" required
                         class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
                 </div>
 
@@ -144,7 +144,7 @@
                     <div>
                         <label for="password" class="text-xl float-left">Password:</label>
                     </div>
-                    <input type="password" name="password" id="password" placeholder="Enter Password"
+                    <input type="password" name="password" id="password" placeholder="Enter Password" required
                         class="h-[50px]  w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
                 </div>
 
@@ -188,7 +188,10 @@
     </footer>
 
     <script>
+
+        //  change the content according to the user type selected
         function selectedUserType() {
+
             let userDiv = document.getElementById("userDiv");
             let adminDiv = document.getElementById("adminDiv");
 
