@@ -9,6 +9,10 @@
 
         <style>
 
+            * {
+                transition: 0.5s;
+            }
+
             input[type = "password"].error {
 
                 border : 3px solid red;
@@ -19,6 +23,23 @@
                 border: 2px solid blue;
                 outline: none;
             }
+
+            .toastify {
+                padding: 12px 20px;
+                color: #ffffff;
+                display: inline-block;
+                box-shadow: 0 3px 6px -1px rgba(0, 0, 0, 0.12), 0 10px 36px -4px rgba(77, 96, 232, 0.3);
+                background: -webkit-linear-gradient(315deg, #73a5ff, #5477f5);
+                background: linear-gradient(135deg, #73a5ff, #5477f5);
+                position: fixed;
+                top: -150px;
+                right: 15px;
+                opacity: 0;
+                transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                border-radius: 2px;
+                cursor: pointer;
+            }
+            .toastify.on { opacity: 1; }
 
         </style>
         
@@ -62,23 +83,23 @@
             <!-- Reqested form  -->
             <div class="bg-zinc-800 p-10 lg:px-20 lg:py-10 ">
 
-               <form action="" class=" text-[20px]" >
+               <form method="post" class=" text-[20px]" name="myForm" onsubmit="return validateForm();" >
 
                     <label for="Unane" class="text-xl">Name : </label><br>
 
-                    <input type="text" name="name" id="Uname" required placeholder="Enter Name" class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
+                    <input type="text" name="name" id="Uname" placeholder="Enter Name" class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
 
                     <label for="email" class="text-xl">Email : </label><br>
 
-                    <input type="email" name="email" id="email" required placeholder="Enter Email" class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
+                    <input type="email" name="email" id="email" placeholder="Enter Email" class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
 
                     <label for="password" class="text-xl">Password : </label><br>
 
-                    <input type="password" name="password" id="password" required placeholder="Enter Password" class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
+                    <input type="password" name="password" id="password" placeholder="Enter Password" class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
 
                     <label for="confirm_password" class="text-xl">Confirm Password : </label><br>
 
-                    <input type="password" name="c_password" id="confirm_password" required placeholder="Confirm Password"class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
+                    <input type="password" name="c_password" id="confirm_password" placeholder="Confirm Password"class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
 
                     <button class="m-10 px-4 py-2 rounded-lg text-[18px] sm:text-[25px] tracking-wide font-semibold bg-blue-500 hover:bg-blue-800 hover:shadow-2xl hover:shadow-indigo-500/50">Request</button>
 
@@ -103,6 +124,9 @@
     
         </footer>
 
+
+        <script src="./JS/toastify.js"></script>
+        
         <script>
 
             // Password Validation 
@@ -125,6 +149,50 @@
 
             })
             // End of Password Validatin
+
+            // Regular Expression
+            function validateForm () {
+
+                var email = document.forms["myForm"]["email"].value;
+
+                var password = document.forms["myForm"]["password"].value;
+
+                var emailRegex = /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,5})+$/;
+
+                var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+                if (!emailRegex.test(email)) {
+                    var myToast = Toastify({
+                        text: "Please enter a valid email address",
+                        duration: 3000
+                    });
+
+                    myToast.showToast();
+
+                    return false;
+
+                }
+
+
+                if (!passwordRegex.test(password)) {
+
+                    var myToast = Toastify({
+                        text: "Please enter a valid password",
+                        duration: 3000
+                    });
+
+                    myToast.showToast();
+                    
+
+                    return false;
+
+                }
+
+                return true;
+
+            }
+            
+
 
         </script>
 

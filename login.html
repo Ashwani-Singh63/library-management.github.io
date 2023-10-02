@@ -8,6 +8,13 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+
+        * {
+
+            transition: 0.5s;
+
+        }
+
         input[type='radio']:after {
             width: 15px;
             height: 15px;
@@ -74,6 +81,26 @@
                 position: relative;
             }
         }
+
+        .toastify {
+                padding: 12px 20px;
+                color: #ffffff;
+                display: inline-block;
+                box-shadow: 0 3px 6px -1px rgba(0, 0, 0, 0.12), 0 10px 36px -4px rgba(77, 96, 232, 0.3);
+                background: -webkit-linear-gradient(315deg, #73a5ff, #5477f5);
+                background: linear-gradient(135deg, #73a5ff, #5477f5);
+                position: fixed;
+                top: -150px;
+                right: 15px;
+                opacity: 0;
+                transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+                border-radius: 2px;
+                cursor: pointer;
+            }
+
+
+        .toastify.on { opacity: 1; }
+
     </style>
 </head>
 
@@ -130,7 +157,7 @@
         <!-- Reqested form  -->
         <div class="bg-zinc-800 p-10 lg:p-20">
 
-            <form action="" class="text-right text-[18px] sm:text-[25px]">
+            <form action="" class="text-right text-[18px] sm:text-[25px]" onsubmit="return validateForm();">
 
                 <div class="flex flex-col">
                     <div>
@@ -187,6 +214,8 @@
 
     </footer>
 
+    <script src="./JS/toastify.js"></script>
+
     <script>
 
         //  change the content according to the user type selected
@@ -206,6 +235,48 @@
                 adminDiv.classList.add("lg:hidden");
                 adminDiv.classList.remove("lg:block");
             }
+        }
+
+        // Regular Expression
+        function validateForm () {
+
+            var email = document.forms["myForm"]["email"].value;
+
+            var password = document.forms["myForm"]["password"].value;
+
+            var emailRegex = /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,5})+$/;
+
+            var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+            if (!emailRegex.test(email)) {
+                var myToast = Toastify({
+                    text: "Please enter a valid email address",
+                    duration: 3000
+                });
+
+                myToast.showToast();
+
+                return false;
+
+            }
+
+
+            if (!passwordRegex.test(password)) {
+
+                var myToast = Toastify({
+                    text: "Please enter a valid password",
+                    duration: 3000
+                });
+                
+                myToast.showToast();
+                
+
+                return false;
+
+            }
+
+            return true;
+
         }
 
         
