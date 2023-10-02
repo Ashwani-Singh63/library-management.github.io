@@ -24,7 +24,7 @@
                 outline: none;
             }
 
-            .toastify {
+            /* .toastify {
                 padding: 12px 20px;
                 color: #ffffff;
                 display: inline-block;
@@ -39,7 +39,7 @@
                 border-radius: 2px;
                 cursor: pointer;
             }
-            .toastify.on { opacity: 1; }
+            .toastify.on { opacity: 1; } */
 
         </style>
         
@@ -87,19 +87,21 @@
 
                     <label for="Unane" class="text-xl">Name : </label><br>
 
-                    <input type="text" name="name" id="Uname" placeholder="Enter Name" class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
+                    <input type="text" name="name" id="Uname" placeholder="Enter Name" class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white" required><br>
 
                     <label for="email" class="text-xl">Email : </label><br>
 
-                    <input type="email" name="email" id="email" placeholder="Enter Email" class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
+                    <input type="email" name="email" id="email" placeholder="Enter Email" class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white" required><br>
 
                     <label for="password" class="text-xl">Password : </label><br>
 
-                    <input type="password" name="password" id="password" placeholder="Enter Password" class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
+                    <input type="password" name="password" id="password" placeholder="Enter Password" class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white" required><br>
+                    
+                    <div id="validPassword" class="text-[red] text-sm mb-4 hidden">** Comtain one uppercase, lowercase, numbers and specioal character</div>
 
                     <label for="confirm_password" class="text-xl">Confirm Password : </label><br>
 
-                    <input type="password" name="c_password" id="confirm_password" placeholder="Confirm Password"class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
+                    <input type="password" name="c_password" id="confirm_password" placeholder="Confirm Password"class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white" required><br>
 
                     <button class="m-10 px-4 py-2 rounded-lg text-[18px] sm:text-[25px] tracking-wide font-semibold bg-blue-500 hover:bg-blue-800 hover:shadow-2xl hover:shadow-indigo-500/50">Request</button>
 
@@ -125,7 +127,7 @@
         </footer>
 
 
-        <script src="./JS/toastify.js"></script>
+        <!-- <script src="./JS/toastify.js"></script> -->
 
         <script>
 
@@ -163,13 +165,6 @@
 
                 if (!emailRegex.test(email)) {
 
-                    var myToast = Toastify({
-                        text: "Please enter a valid email address",
-                        duration: 3000
-                    });
-
-                    myToast.showToast();
-
                     return false;
 
                 }
@@ -177,12 +172,9 @@
 
                 if (!passwordRegex.test(password)) {
 
-                    var myToast = Toastify({
-                        text: "Please enter a valid password",
-                        duration: 3000
-                    });
+                    let valPassword = document.getElementById('validPassword');
 
-                    myToast.showToast();
+                    valPassword.classList.remove("hidden");
                     
 
                     return false;

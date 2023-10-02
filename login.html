@@ -82,7 +82,7 @@
             }
         }
 
-        .toastify {
+        /* .toastify {
                 padding: 12px 20px;
                 color: #ffffff;
                 display: inline-block;
@@ -99,7 +99,7 @@
             }
 
 
-        .toastify.on { opacity: 1; }
+        .toastify.on { opacity: 1; } */
 
     </style>
 
@@ -158,7 +158,7 @@
         <!-- Reqested form  -->
         <div class="bg-zinc-800 p-10 lg:p-20">
 
-            <form action="" class="text-right text-[18px] sm:text-[25px]" name="myForm" onsubmit="return validateForm();">
+            <form action="" class=" text-[18px] sm:text-[25px]" name="myForm" onsubmit="return validateForm();">
 
                 <div class="flex flex-col">
                     <div>
@@ -173,7 +173,9 @@
                         <label for="password" class="text-xl float-left">Password:</label>
                     </div>
                     <input type="password" name="password" id="password" placeholder="Enter Password" required
-                        class="h-[50px]  w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white"><br>
+                        class="h-[50px]  w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-0 rounded-xl bg-transparent input-field text-white"><br>
+
+                    <div id="validPassword" class="text-[red] text-sm mb-4 hidden">** Comtain one uppercase, lowercase, numbers and specioal character</div>
                 </div>
 
 
@@ -215,7 +217,7 @@
 
     </footer>
 
-    <script src="./JS/toastify.js"></script>
+    <!-- <script src="./JS/toastify.js"></script> -->
 
     <script>
 
@@ -255,26 +257,17 @@
 
             if (!emailRegex.test(email)) {
 
-                var myToast = Toastify({
-                    text: "Please enter a valid email address",
-                    duration: 3000
-                });
-
-                myToast.showToast();
-
                 return false;
 
             }
 
 
             if (!passwordRegex.test(password)) {
+        
 
-                var myToast = Toastify({
-                    text: "Please enter a valid password",
-                    duration: 3000
-                });
-                
-                myToast.showToast();
+                let valPassword = document.getElementById('validPassword');
+
+                valPassword.classList.remove("hidden");
                 
 
                 return false;
