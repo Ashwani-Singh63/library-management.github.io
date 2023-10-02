@@ -102,6 +102,7 @@
         .toastify.on { opacity: 1; }
 
     </style>
+
 </head>
 
 <body class="bg-[url('./image/Frame_3.png')]">
@@ -225,15 +226,19 @@
             let adminDiv = document.getElementById("adminDiv");
 
             if (userDiv.classList.contains("lg:block")) {
+
                 userDiv.classList.remove("lg:block");
                 userDiv.classList.add("lg:hidden");
                 adminDiv.classList.add("lg:block");
                 adminDiv.classList.remove("lg:hidden");
+
             } else {
+
                 userDiv.classList.remove("lg:hidden");
                 userDiv.classList.add("lg:block");
                 adminDiv.classList.add("lg:hidden");
                 adminDiv.classList.remove("lg:block");
+                
             }
         }
 
@@ -249,6 +254,7 @@
             var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
             if (!emailRegex.test(email)) {
+
                 var myToast = Toastify({
                     text: "Please enter a valid email address",
                     duration: 3000
