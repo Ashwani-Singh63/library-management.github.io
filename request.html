@@ -126,7 +126,7 @@
 
 
         <script src="./JS/toastify.js"></script>
-        
+
         <script>
 
             // Password Validation 
@@ -162,6 +162,7 @@
                 var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
                 if (!emailRegex.test(email)) {
+
                     var myToast = Toastify({
                         text: "Please enter a valid email address",
                         duration: 3000
