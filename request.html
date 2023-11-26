@@ -13,7 +13,11 @@
                 transition: 0.5s;
             }
 
-            input[type = "password"].error {
+             /*  
+                targets HTML input elements of type "password" that also have a class of "error" applied to them. This selector is commonly used in web development to style password input fields when an error condition occurs, such as an incorrect password or missing information.  
+             */
+
+            input[type = "password"].error {    
 
                 border : 3px solid red;
                 
@@ -80,7 +84,7 @@
 
                     <input type="password" name="password" id="password" placeholder="Enter Password" class="h-[50px] w-[100%] sm:w-[350px] md:w-[450px] pl-4 my-4 rounded-xl bg-transparent input-field text-white" required><br>
                     
-                    <div id="validPassword" class="text-[red] text-sm mb-4 hidden">** Comtain one uppercase, lowercase, numbers and specioal character</div>
+                    <div id="validPassword" class="text-[red] text-sm mb-4 hidden">** Contain one uppercase, lowercase, numbers and specioal character</div>
 
                     <label for="confirm_password" class="text-xl">Confirm Password : </label><br>
 
@@ -138,15 +142,21 @@
             // Regular Expression
             function validateForm () {
 
-                var email = document.forms["myForm"]["email"].value;
+                // let email = document.forms["myForm"]["email"].value;
 
-                var password = document.forms["myForm"]["password"].value;
+                // let password = document.forms["myForm"]["password"].value;
 
-                var confirmPassword = document.forms["myForm"]["confirm_password"].value;
+                // let confirmPassword = document.forms["myForm"]["confirm_password"].value;
 
-                var emailRegex = /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,5})+$/;
+                let email = document.getElementById('email').value;
 
-                var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+                let password = document.getElementById('password').value;
+
+                let confirmPassword = document.getElementById('confirm_password').value;
+
+                let emailRegex = /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,5})+$/;
+
+                let passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
                 if (!emailRegex.test(email)) {
 
